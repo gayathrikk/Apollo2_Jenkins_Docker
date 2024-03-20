@@ -20,7 +20,9 @@ public class Apollo2_jenkins_Docker {
 
         String password = "Health#123";
 
-        String containerId = "0e6ff49eb0b0"; 
+        String containerId = "0e6ff49eb0b0";
+
+	 System.out.println("Apollo2 jenkins Docker is = "+containerId);
 
         if (containerId.isEmpty()) {
 
