@@ -29,7 +29,7 @@ public class Apollo2_jenkins_Docker {
         try {
             // Establish SSH connection
             JSch jsch = new JSch();
-            Session session = jsch.getSession(username, vmIpAddress, 22);
+            com.jcraft.jsch.Session session = jsch.getSession(username, vmIpAddress, 22);
             session.setPassword(password);
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect();
