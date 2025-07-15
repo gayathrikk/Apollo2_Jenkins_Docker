@@ -14,13 +14,13 @@ public class Apollo2_jenkins_Docker {
 
 	public void Jenkins_Status() {
 
-		String vmIpAddress = "172.16.20.232";
+		String vmIpAddress = "172.20.23.136";
 
         String username = "hbp";
 
         String password = "Health#123";
 
-        String containerId = "0e6ff49eb0b0";
+        String containerId = "3489a951bf2f";
 
 	 System.out.println("Apollo2 jenkins Docker is = "+containerId);
 
