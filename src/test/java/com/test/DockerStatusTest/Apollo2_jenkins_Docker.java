@@ -17,12 +17,12 @@ public class Apollo2_jenkins_Docker {
         String vmIpAddress = "172.20.23.136";
         String username = "hbp";
         String password = "Health#123";
-        String containerId = "3489a951bf2f";
+        String containerName = "jenkins_for_annotation_proc";  // ✅ Using docker name instead of ID
 
-        System.out.println("Apollo2 Jenkins Docker is = " + containerId);
+        System.out.println("Apollo2 Jenkins Docker = " + containerName);
 
-        if (containerId.isEmpty()) {
-            System.out.println("Container ID is required.");
+        if (containerName.isEmpty()) {
+            System.out.println("Container name is required.");
             return;
         }
 
@@ -34,9 +34,9 @@ public class Apollo2_jenkins_Docker {
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect();
 
-            // Execute the docker inspect command
+            // Execute the docker inspect command with name
             ChannelExec channel = (ChannelExec) session.openChannel("exec");
-            channel.setCommand("docker inspect --format='{{.State.Status}}' " + containerId);
+            channel.setCommand("docker inspect --format='{{.State.Status}}' " + containerName);
             channel.setInputStream(null);
             channel.setErrStream(System.err);
             BufferedReader reader = new BufferedReader(new InputStreamReader(channel.getInputStream()));
@@ -56,7 +56,7 @@ public class Apollo2_jenkins_Docker {
 
             // If container is not running, send alert
             if (!isRunning) {
-                sendEmailAlert("Nathan bro 😩,\n\n🚨 This is Apollo2 Jenkins Docker. I am currently down. Kindly restart the container at your earliest convenience.");
+                sendEmailAlert("Hii ,\n\n🚨 This is Apollo2 Jenkins Docker. I am currently down. Kindly restart the container at your earliest convenience.");
                 assert false : "Container is not in the expected state.";
             }
 
@@ -67,8 +67,8 @@ public class Apollo2_jenkins_Docker {
 
     public void sendEmailAlert(String messageBody) {
         String from = "automationsoftware25@gmail.com";
-        String to = "nathan.i@htic.iitm.ac.in";
-        String cc = "azizahammed.a@htic.iitm.ac.in,satheskumar@htic.iitm.ac.in";
+        String to = "ramanan@htic.iitm.ac.in";
+        String cc = "nitheshkumarsundhar@gmail.com,venip@htic.iitm.ac.in";
         String subject = "Docker Container Alert - Apollo2 Jenkins";
         final String username = "automationsoftware25@gmail.com";
         final String password = "wjzcgaramsqvagxu";  // App password
